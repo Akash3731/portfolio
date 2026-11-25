@@ -1,0 +1,364 @@
+@import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+/* ============================================================
+   Design tokens — single source of truth (mobile-first)
+   ============================================================ */
+:root {
+  /* Colors */
+  --primary: #0c100d;
+  --accent: #cdee46;
+  --color-text-primary: #101311;
+  --color-text-muted: #8b908b;
+  --color-text-soft: #c4c8c2;
+  --color-text-on-dark: #ffffff;
+  --color-text-on-dark-soft: #c3c8c1;
+  --color-text-on-dark-stat: #b9beb7;
+  --color-text-on-dark-muted: #9ba39b;
+  --color-line: #e3e6e1;
+  --color-line-on-dark: rgba(255, 255, 255, 0.14);
+  --color-line-on-dark-strong: rgba(255, 255, 255, 0.28);
+  --color-ring-on-dark: rgba(255, 255, 255, 0.3);
+
+  --surface-page-from: #c9d6c4;
+  --surface-page-to: #a9c2a5;
+  --surface-card: #ffffff;
+  --surface-pill: #f2f3f0;
+  --surface-dark-panel: #111512;
+  --surface-dark-raised: #151a16;
+  --surface-dark-raised-2: #1b211c;
+  --surface-dark-chip: #1c221d;
+  --surface-dark-line: #2a302b;
+  --surface-dark-bar: #2c332d;
+
+  /* Illustrations (flat cover art) */
+  --illo-ink: #101311;
+  --illo-cream: #f3f1ea;
+  --illo-muted: #d3d6d0;
+  --illo-muted-ink: #6b706b;
+  --illo-blue: #7d97f4;
+  --illo-teal: #8fd3c9;
+  --illo-coral: #f0715f;
+  --illo-yellow: #f6c453;
+  --illo-blue-tint: #e9edfb;
+  --illo-teal-tint: #e3f3ee;
+  --illo-yellow-tint: #fbf2dc;
+  --illo-coral-tint: #fbe7e2;
+  --illo-indigo: #3e4fa6;
+  --illo-indigo-tint: #eaecf8;
+
+  /* Typography */
+  --font-body: var(--font-dm-sans), system-ui, sans-serif;
+  --font-code: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --title-xl: clamp(2.875rem, 9.6vw, 6.75rem); /* display headline */
+  --title-hero: clamp(2rem, 6vw, 3.25rem); /* hero tagline (max size) */
+  --title-hero-fit: 8.2cqi; /* caps the tagline so its longest line fits its column */
+  --title-display: clamp(2.625rem, 9vw, 6.25rem); /* contact h2 */
+  --title-l: clamp(2.125rem, 6.4vw, 4.25rem); /* section h2 */
+  --title-m: clamp(1.875rem, 5.4vw, 3.375rem); /* case study h3 */
+  --title-s: clamp(1.5rem, 4vw, 2.375rem); /* service h3 */
+  --title-xs: clamp(1.1875rem, 2.8vw, 1.5625rem); /* card titles */
+  --text-lead: clamp(1.375rem, 3.9vw, 2.25rem);
+  --text-hey: clamp(1.125rem, 2.6vw, 1.5rem);
+  --text-mail: clamp(1.125rem, 3.2vw, 1.75rem);
+  --text-stat: clamp(1.75rem, 4.4vw, 2.5rem);
+  --text-stat-l: clamp(1.875rem, 5vw, 2.875rem);
+  --text-body: 1rem;
+  --text-m: 0.9375rem;
+  --text-s: 0.875rem;
+  --text-xs: 0.8125rem;
+
+  /* Layout */
+  --container-max: 1440px;
+  --page-margin: clamp(10px, 3vw, 40px); /* gap between viewport and white page card */
+  --section-margin: clamp(14px, 2.6vw, 34px); /* horizontal padding inside page card */
+  --section-gap: clamp(56px, 10vw, 130px); /* vertical gap between sections */
+  --block-pad: clamp(18px, 3vw, 34px);
+  --hero-pad: clamp(22px, 4.4vw, 58px);
+  --navbar-height: 44px;
+  --nav-gap: clamp(12px, 2vw, 22px); /* space between navbar and hero */
+  /* Hero height: content height on phones, first screen on tablets, capped on tall desktops */
+  --hero-fill: calc(100svh - var(--page-margin) - var(--navbar-height) - var(--nav-gap) - 2 * var(--section-margin));
+  /* Phones: slightly shorter than the screen so the next section peeks in */
+  --hero-min-h: calc(var(--hero-fill) - 12svh);
+
+  /* Radii */
+  --radius-sm: 18px;
+  --radius-cover: 20px;
+  --radius-row: 22px;
+  --radius-md: clamp(18px, 2.6vw, 26px);
+  --radius-lg: clamp(20px, 3vw, 30px);
+  --radius-xl: clamp(22px, 3.4vw, 36px);
+  --radius-full: 999px;
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --transition-fast: 0.25s;
+  --transition-base: 0.4s;
+  --transition-slow: 0.6s;
+  --transition-reveal: 0.8s;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --hero-min-h: max(480px, var(--hero-fill));
+  }
+}
+@media (min-width: 1024px) {
+  :root {
+    /* Side-by-side layout: never taller than the content needs on tall portrait screens */
+    --hero-min-h: clamp(480px, var(--hero-fill), 75vw);
+  }
+}
+
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-code);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-ink: var(--color-text-primary);
+  --color-mute: var(--color-text-muted);
+  --color-soft: var(--color-text-soft);
+  --color-line: var(--color-line);
+  --color-pill: var(--surface-pill);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+html {
+  font-size: 14px;
+  -webkit-text-size-adjust: 100%;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  min-height: 100dvh;
+  background: linear-gradient(180deg, var(--surface-page-from), var(--surface-page-to));
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+}
+
+a {
+  text-underline-offset: 4px;
+}
+
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+}
+
+@layer components {
+/* ============================================================
+   Scroll reveal (only hides content once JS has flagged <html>)
+   ============================================================ */
+[data-js] .rv {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity var(--transition-reveal),
+    transform var(--transition-reveal) var(--ease-out);
+  transition-delay: var(--dl, 0ms);
+}
+[data-js] .rv.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   Tools marquee
+   ============================================================ */
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee 40s linear infinite;
+}
+
+/* Case study content swap */
+@keyframes case-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.case-in {
+  animation: case-in 0.6s var(--ease-out);
+}
+
+/* Illustration motion (SVG) */
+.illo-float {
+  animation: illo-float 4.5s ease-in-out infinite;
+}
+.illo-blink {
+  animation: illo-blink 1.6s steps(1) infinite;
+}
+.illo-grow {
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: illo-grow 2.6s ease-in-out infinite alternate;
+}
+.illo-spin {
+  transform-box: view-box;
+  animation: illo-spin 7s linear infinite;
+}
+.illo-cursor {
+  animation: illo-cursor 6s ease-in-out infinite;
+}
+.illo-cursor-sm {
+  animation: illo-cursor-sm 4s ease-in-out infinite;
+}
+.illo-type {
+  transform-box: fill-box;
+  transform-origin: left;
+  animation: illo-type 3.2s ease-in-out infinite;
+}
+.illo-progress {
+  transform-box: fill-box;
+  transform-origin: left;
+  animation: illo-progress 3.6s ease-in-out infinite alternate;
+}
+.illo-ring {
+  animation: illo-ring 3.6s ease-in-out infinite alternate;
+}
+.illo-slide {
+  animation: illo-slide 4s ease-in-out infinite alternate;
+}
+.illo-pulse {
+  transform-box: view-box;
+  animation: illo-pulse 2.4s ease-in-out infinite;
+}
+.illo-swing {
+  transform-box: view-box;
+  animation: illo-swing 2.8s ease-in-out infinite;
+}
+@keyframes illo-float {
+  50% {
+    transform: translateY(-8px);
+  }
+}
+@keyframes illo-blink {
+  50% {
+    opacity: 0.2;
+  }
+}
+@keyframes illo-grow {
+  from {
+    transform: scaleY(0.55);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+@keyframes illo-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes illo-cursor {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  35% {
+    transform: translate(150px, -60px);
+  }
+  65% {
+    transform: translate(60px, -10px);
+  }
+}
+@keyframes illo-cursor-sm {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-22px, -14px);
+  }
+}
+@keyframes illo-type {
+  0% {
+    transform: scaleX(0);
+  }
+  60%,
+  100% {
+    transform: scaleX(1);
+  }
+}
+@keyframes illo-progress {
+  from {
+    transform: scaleX(0.2);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes illo-ring {
+  from {
+    stroke-dashoffset: var(--ring);
+  }
+  to {
+    stroke-dashoffset: var(--ring-to);
+  }
+}
+@keyframes illo-slide {
+  from {
+    transform: translate(-26px, 8px) rotate(-4deg);
+  }
+  to {
+    transform: translate(0, 0) rotate(0deg);
+  }
+}
+@keyframes illo-pulse {
+  50% {
+    transform: scale(1.07);
+  }
+}
+@keyframes illo-swing {
+  0%,
+  100% {
+    transform: rotate(-8deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-js] .rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .marquee,
+  .case-in,
+  [class*="illo-"] {
+    animation: none !important;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0s !important;
+  }
+}
+}
