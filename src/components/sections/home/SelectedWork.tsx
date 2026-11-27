@@ -93,6 +93,7 @@ export default function SelectedWork({ data }: SelectedWorkProps) {
         id={CASE_ID}
         project={current}
         list={list}
+        all={data.projects}
         onSelect={setCurrentId}
         onPrev={() => step(-1)}
         onNext={() => step(1)}

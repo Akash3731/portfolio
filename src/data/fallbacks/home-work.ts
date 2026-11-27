@@ -21,9 +21,18 @@ export const homeWork: WorkData = {
       url: "stenergy.in",
       image: "/home/work/stenergy-hero.webp",
       gradient: ["#4A3A18", "#17120A"],
-      brief: "Show battery systems from home units to grid scale so buyers understand what is inside.",
-      part: "Built the site around a 3D product experience where each system opens up into its components.",
-      stack: "Next.js, React, interactive 3D",
+      brief:
+        "ST Energy needed a site that explains its LFP battery storage range, from 5 kWh home units to 5 MWh containers, clearly enough for homeowners, C&I buyers and utilities.",
+      part:
+        "Built the full site with a product page for each of five products, three service pages, an insights article and a contact form. Developed a Three.js product explorer where visitors double-click to drill down from container to rack, pack, module and cell.",
+      features: [
+        "3D drill-down explorer with spec sheets for each container, rack, pack and cell",
+        "Product pages for Dawn, Day, Dusk, Energy Pack and Energy Cell",
+        "Full technical specification tables for every battery system",
+        "Service pages for EPC, energy management and O&M",
+        "Insights section with a long-form article on LFP battery degradation",
+      ],
+      stack: "Next.js, React, Three.js, React Three Fiber, Tailwind CSS",
     },
     {
       id: "poleplus",
@@ -53,9 +62,18 @@ export const homeWork: WorkData = {
       url: "unochargers.com",
       image: "/home/work/uno-hero.webp",
       gradient: ["#4A1F1A", "#190B0A"],
-      brief: "Help buyers pick the right charger across a wide power range.",
-      part: "Built a model-switching product experience with side-by-side comparisons.",
-      stack: "Next.js, React",
+      brief:
+        "UNO Chargers, the EV charging division of Success Engineers, needed a product site presenting its AC and DC charger range, charging software and mobile app to homes and fleets.",
+      part:
+        "Built an eight-page site covering AC and DC chargers, the charging software, mobile app, company story and contact. Developed a model switcher that moves across chargers from 3.3 kW to 240 kW, plus comparison tables of specs for each range.",
+      features: [
+        "Charger switcher across 3.3 kW and 7.4 kW AC and 30 to 240 kW DC models",
+        "Side-by-side comparison tables for the AC and DC charger lines",
+        "Software page covering monitoring, billing and analytics dashboards",
+        "Mobile app page with features for RFID access and charging history",
+        "Admin CMS with page editor, media library and SEO panel",
+      ],
+      stack: "Next.js, React, Prisma, PostgreSQL, Tailwind CSS",
     },
     {
       id: "besto",
@@ -86,9 +104,18 @@ export const homeWork: WorkData = {
       url: "ajaanbaug.com",
       image: "/home/work/ajaan-hero.webp",
       gradient: ["#3B4226", "#15180D"],
-      brief: "Launch a residential project and turn visitors into site visits.",
-      part: "Built an interactive apartment cutaway, a location explorer and enquiry flows.",
-      stack: "Next.js, React",
+      brief:
+        "Jambhalkar Construction needed a launch site for Ajaan Baug, a 2 BHK project in Alandi, Pune, that turns interest into brochure downloads and site visit requests.",
+      part:
+        "Built a single-page launch site covering the story, homes, specifications, amenities and location. Developed a numbered apartment cutaway for specifications, a tabbed landmark explorer with a map, and enquiry forms that send leads to Google Sheets.",
+      features: [
+        "Interactive 2 BHK cutaway with eight numbered specification points",
+        "Location explorer with tabs for schools, hospitals, temples and metro",
+        "Embedded Google Map alongside distances to nearby landmarks",
+        "Site visit form with weekend, weekday or brochure-only choices",
+        "Brochure download modal that records each lead in Google Sheets",
+      ],
+      stack: "Next.js, React, Lenis, Tailwind CSS",
     },
     {
       id: "acadmea",
@@ -172,9 +199,18 @@ export const homeWork: WorkData = {
       url: "stelectricals.com",
       image: "/home/work/stelec-hero.webp",
       gradient: ["#1D3550", "#0B1522"],
-      brief: "Give a power infrastructure contractor a credible national presence.",
-      part: "Developed the corporate site with a company timeline, services and a project showcase.",
-      stack: "Next.js, React",
+      brief:
+        "ST Electricals, a power infrastructure contractor established in 1998, needed a corporate site presenting its history, services and transmission and substation projects.",
+      part:
+        "Built the corporate site with home, about, services, projects, blogs and contact pages. Developed a company timeline from 1976 to the present, project showcases with detail modals, and an admin CMS for editing pages, blog posts, media and SEO.",
+      features: [
+        "Company timeline running from 1976 through the founding in 1998 to today",
+        "Featured project cards for T-02, T-14, T-73 and others with detail modals",
+        "Services page covering transmission lines, substations and contracting",
+        "Blog with technical case studies, such as a 308 km line execution",
+        "Admin CMS with blog editor, media library and SEO scoring",
+      ],
+      stack: "Next.js, React, Prisma, PostgreSQL, Tailwind CSS",
     },
     {
       id: "sector24",
@@ -216,9 +252,18 @@ export const homeWork: WorkData = {
       org: "Adveria Digital, 2026",
       image: "/home/work/jyoti-hero.webp",
       gradient: ["#55301A", "#1C0F08"],
-      brief: "Replace a legacy WordPress site for a heat treatment group.",
-      part: "Rebuilt the site, documenting seven processes and the infrastructure of six plants.",
-      stack: "Next.js, React",
+      brief:
+        "Jyoti Group, an ISO 9001 and IATF certified heat treatment company, needed to replace its legacy WordPress site with one that sets out its processes and six plants in detail.",
+      part:
+        "Built a new site with pages for services, infrastructure, furnaces, quality and contact, plus a detail page for each of seven heat treatment processes. Developed an admin CMS with a page editor, media library and SEO tools so the team can update content.",
+      features: [
+        "Detail pages for seven processes, from vacuum and nitriding to cryogenic",
+        "Infrastructure page with per-plant furnace and equipment tables",
+        "Furnaces carousel covering seven furnace types, from vacuum to rotary",
+        "Quality page listing metallurgy lab equipment for Pune and Chennai",
+        "Offices directory for seven locations, with a brochure request form",
+      ],
+      stack: "Next.js, React, Prisma, PostgreSQL, Tailwind CSS",
     },
   ],
 };
