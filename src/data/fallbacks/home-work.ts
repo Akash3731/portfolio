@@ -145,9 +145,18 @@ export const homeWork: WorkData = {
       url: "siddhisteelfurniture.com",
       image: "/home/work/siddhi-hero.webp",
       gradient: ["#28405A", "#0E1722"],
-      brief: "Bring a manufacturer's catalogue online for the schools it has served since 1985.",
-      part: "Built the site and a 125+ product catalogue where a school shortlists items and requests a quote in one step.",
-      stack: "Next.js, product catalogue",
+      brief:
+        "Siddhi Steel Furniture, a Mumbai manufacturer that has furnished 700+ schools since 1985, needed its full catalogue online so institutions could shortlist and enquire.",
+      part:
+        "Built a catalogue site with products, our work, workshop, clients, about and contact pages, plus a page for every model. Developed enquiry and catalogue-download flows that log leads to Google Sheets, with WhatsApp as a one-tap alternative.",
+      features: [
+        "125+ products in eleven ranges, each with its own SSF model page",
+        "Enquire on any product, prefilled into a single enquiry form",
+        "Our Work gallery of real installations filtered by type of space",
+        "Workshop page tracing a bench from raw steel to powder coating",
+        "Leads and catalogue requests sent to Google Sheets or WhatsApp",
+      ],
+      stack: "Next.js, React, Lenis, Google Sheets",
     },
     {
       id: "naukri",
@@ -240,9 +249,18 @@ export const homeWork: WorkData = {
       org: "Adveria Digital, 2026",
       image: "/home/work/cms-cover.webp",
       gradient: ["#2F3A1A", "#12170A"],
-      brief: "A client team wanted to edit their own site without waiting on a developer.",
-      part: "Designed and built a CMS for every page, with a rule-based SEO score that updates as they write.",
-      stack: "CMS development, SEO scoring engine",
+      brief:
+        "A client team wanted to rewrite and publish any page of their website on their own, without waiting on a developer, and to know whether each change was good for search.",
+      part:
+        "Designed and built a CMS where every page, section and field of the site can be edited, alongside a blog, media library and team access. Wrote a rule-based SEO engine that scores each page and post live as the team types.",
+      features: [
+        "Page editor that exposes every section and field of the live site",
+        "Blog editor for writing, editing and publishing posts by slug",
+        "Rule-based SEO score for each page and post, updated while typing",
+        "SEO overview that shows the score of every page and post in one view",
+        "Media library with uploads, plus login-protected team accounts",
+      ],
+      stack: "Next.js, React, Prisma, JWT auth",
     },
     {
       id: "jyoti",
